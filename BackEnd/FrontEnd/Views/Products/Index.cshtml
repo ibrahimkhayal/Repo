@@ -1,0 +1,43 @@
+@model IEnumerable<ProductViewModel>
+@{
+    ViewData["Title"] = "Products List";
+}
+
+<h2>Products List</h2>
+
+<p>
+    <a href="@Url.Action("Create", "Products")" class="btn btn-primary">Create New Product</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Rating</th>
+            <th>Category</th>
+            <th>Stock</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+      @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price</td>
+                <td>@product.Rating</td>
+                <td>@product.Category</td>
+                <td>@product.Stock</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Products", new { id = product.Id })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Delete", "Products", new { id = product.Id })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
